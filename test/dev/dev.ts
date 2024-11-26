@@ -32,6 +32,7 @@
             "stringArrayThreshold": 0,
             "transformObjectKeys": true,
             "unicodeEscapeSequence": false,
+            "useEscapeEncoder": true, //comical
             "ignoreImports": false
         }
     ).getObfuscatedCode();

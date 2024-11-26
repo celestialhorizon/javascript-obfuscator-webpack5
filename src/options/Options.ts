@@ -431,6 +431,12 @@ export class Options implements IOptions {
     public readonly unicodeEscapeSequence!: boolean;
 
     /**
+     * @type {boolean}
+     */
+    @IsBoolean()
+    public readonly useEscapeEncoder!: boolean; //comical
+
+    /**
      * @type {string | number}
      */
     public readonly seed!: string | number;

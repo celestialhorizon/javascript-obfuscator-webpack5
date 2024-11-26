@@ -1449,7 +1449,8 @@ describe('JavaScriptObfuscator', () => {
                 stringArray: true,
                 stringArrayThreshold: 1,
                 transformObjectKeys: true,
-                unicodeEscapeSequence: false
+                unicodeEscapeSequence: false,
+                useEscapeEncoder: true //comical
             };
 
             describe('`var` kind', function () {

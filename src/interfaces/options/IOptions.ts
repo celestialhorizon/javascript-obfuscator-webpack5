@@ -63,4 +63,5 @@ export interface IOptions {
     readonly target: TTypeFromEnum<typeof ObfuscationTarget>;
     readonly transformObjectKeys: boolean;
     readonly unicodeEscapeSequence: boolean;
+    readonly useEscapeEncoder: boolean; //comical
 }

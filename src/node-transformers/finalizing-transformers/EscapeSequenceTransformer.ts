@@ -72,7 +72,7 @@ export class EscapeSequenceTransformer extends AbstractNodeTransformer {
      * @returns {Literal}
      */
     public transformNode (literalNode: ESTree.Literal, parentNode: ESTree.Node | null): ESTree.Literal {
-        if (!NodeLiteralUtils.isStringLiteralNode(literalNode)) {
+        if (!NodeLiteralUtils.isStringLiteralNode(literalNode) || !this.options.useEscapeEncoder) { //comical
             return literalNode;
         }
 
