@@ -68,5 +68,5 @@ export const DEFAULT_PRESET: TInputOptions = Object.freeze({
     target: ObfuscationTarget.Browser,
     transformObjectKeys: false,
     unicodeEscapeSequence: false,
-    useEscapeEncoder: true, //comical
+    useEscapeEncoder: true, //  comical
 });
