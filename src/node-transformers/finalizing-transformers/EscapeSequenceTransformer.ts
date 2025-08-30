@@ -76,10 +76,7 @@ export class EscapeSequenceTransformer extends AbstractNodeTransformer {
             return literalNode;
         }
 
-        const encodedValue: string = this.options.useEscapeEncoder ? this.escapeSequenceEncoder.encode(
-            literalNode.value,
-            this.options.unicodeEscapeSequence
-        ) : this.escapeSequenceEncoder.encode1(
+        const encodedValue: string = this.escapeSequenceEncoder.encode(
             literalNode.value,
             this.options.unicodeEscapeSequence
         );

@@ -9,7 +9,7 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
      *
      * @type {RegExp}
      */
-    private static readonly ASCIICharactersRegExp: RegExp = /[\x00-\x7F]/;
+    // private static readonly ASCIICharactersRegExp: RegExp = /[\x00-\x7F]/;
 
     /**
      * https://en.wikipedia.org/wiki/List_of_Unicode_characters
@@ -17,7 +17,7 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
      *
      * @type {RegExp}
      */
-    private static readonly forceEscapeCharactersRegExp: RegExp = /[\x00-\x1F\x7F-\x9F'"\\\s]/;
+    // private static readonly forceEscapeCharactersRegExp: RegExp = /[\x00-\x1F\x7F-\x9F'"\\\s]/;
 
     /**
      * @type {Map<string, string>}
@@ -36,7 +36,7 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
             return <string>this.stringsCache.get(cacheKey);
         }
 
-        const radix: number = 16;
+        /* const radix: number = 16;
         const replaceRegExp: RegExp = new RegExp('[\\s\\S]', 'g');
 
         let prefix: string;
@@ -59,21 +59,8 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
             }
 
             return `${prefix}${(template + character.charCodeAt(0).toString(radix)).slice(-template.length)}`;
-        });
-
-        this.stringsCache.set(cacheKey, result);
-        this.stringsCache.set(`${result}-${String(encodeAllSymbols)}`, result);
-
-        return result;
-    }
-
-    public encode1 (string: string, encodeAllSymbols: boolean): string {
-        const cacheKey: string = `${string}-${String(encodeAllSymbols)}`;
-
-        if (this.stringsCache.has(cacheKey)) {
-            return <string>this.stringsCache.get(cacheKey);
-        }
-        const result: string = string.replace(/'/g, '\\\'');
+        }); */
+        const result: string = string.replace(/'/g, '\\\''); // comical
 
         this.stringsCache.set(cacheKey, result);
         this.stringsCache.set(`${result}-${String(encodeAllSymbols)}`, result);
