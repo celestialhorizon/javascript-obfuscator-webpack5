@@ -72,14 +72,14 @@ export class EscapeSequenceTransformer extends AbstractNodeTransformer {
      * @returns {Literal}
      */
     public transformNode (literalNode: ESTree.Literal, parentNode: ESTree.Node | null): ESTree.Literal {
-        if (!NodeLiteralUtils.isStringLiteralNode(literalNode) || !this.options.useEscapeEncoder) { //  comical
+        if (!NodeLiteralUtils.isStringLiteralNode(literalNode)) { //  comical  || !this.options.useEscapeEncoder
             return literalNode;
         }
 
-        const encodedValue: string = this.escapeSequenceEncoder.encode(
+        const encodedValue: string = this.options.useEscapeEncoder ? this.escapeSequenceEncoder.encode(
             literalNode.value,
             this.options.unicodeEscapeSequence
-        );
+        ) : literalNode.value;
         const newLiteralNode: ESTree.Literal = NodeFactory.literalNode(encodedValue);
 
         NodeUtils.parentizeNode(newLiteralNode, parentNode);
