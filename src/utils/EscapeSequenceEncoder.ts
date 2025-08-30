@@ -66,4 +66,18 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
 
         return result;
     }
+
+    public encode1 (string: string, encodeAllSymbols: boolean): string {
+        const cacheKey: string = `${string}-${String(encodeAllSymbols)}`;
+
+        if (this.stringsCache.has(cacheKey)) {
+            return <string>this.stringsCache.get(cacheKey);
+        }
+        const result: string = string.replace(/'/g, '\\\'');
+
+        this.stringsCache.set(cacheKey, result);
+        this.stringsCache.set(`${result}-${String(encodeAllSymbols)}`, result);
+
+        return result;
+    }
 }
