@@ -110,6 +110,7 @@
     "build:typings": "rm -rf ./typings && tsc --project src/tsconfig.typings.json",
     "watch": "webpack --config ./webpack/webpack.node.config.js --mode development --watch",
     "test:dev": "ts-node --type-check test/dev/dev.ts",
+    "test:coba": "ts-node --type-check test/dev/coba.ts",
     "test:devCompilePerformance": "ts-node test/dev/dev-compile-performance.ts",
     "test:devRuntimePerformance": "ts-node test/dev/dev-runtime-performance.ts",
     "test:full": "yarn run test:dev && yarn run test:mocha-coverage && yarn run test:mocha-memory-performance",

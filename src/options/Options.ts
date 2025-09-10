@@ -434,7 +434,13 @@ export class Options implements IOptions {
      * @type {boolean}
      */
     @IsBoolean()
-    public readonly useEscapeEncoder!: boolean; //  comical
+    public readonly useStringEncoder!: boolean; //  comical
+
+        /**
+     * @type {boolean}
+     */
+    @IsBoolean()
+    public readonly useNumberEncoder!: boolean; //  comical
 
     /**
      * @type {string | number}

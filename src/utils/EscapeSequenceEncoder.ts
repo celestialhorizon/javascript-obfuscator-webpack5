@@ -57,12 +57,34 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
                 prefix = '\\u';
                 template = '0000';
             }
-
+            
             return `${prefix}${(template + character.charCodeAt(0).toString(radix)).slice(-template.length)}`;
         });
-
+        
         this.stringsCache.set(cacheKey, result);
         this.stringsCache.set(`${result}-${String(encodeAllSymbols)}`, result);
+        
+        return result;
+    }
+
+    /**
+     * @param {string} string
+     * @returns {string}
+     */
+    public encode1 (string: string): string {
+        const cacheKey: string = `${string}-${String(false)}`;
+
+        if (this.stringsCache.has(cacheKey)) {
+            return <string>this.stringsCache.get(cacheKey);
+        }
+
+        const result: string = string.replace(/'/g, '\\\'')
+                            .replace(/\r\n/g, '\\n') // Windows line endings
+                            .replace(/\r/g, '\\n')   // old Mac line endings
+                            .replace(/\n/g, '\\n');  // Unix line endings
+        
+        this.stringsCache.set(cacheKey, result);
+        this.stringsCache.set(`${result}-${String(false)}`, result);
 
         return result;
     }
