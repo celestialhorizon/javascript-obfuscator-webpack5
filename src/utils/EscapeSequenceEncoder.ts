@@ -81,6 +81,7 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
         const result: string = string.replace(/'/g, '\\\'')
                             .replace(/\r\n/g, '\\n') // Windows line endings
                             .replace(/\r/g, '\\n')   // old Mac line endings
+                            .replace(/\\/g, '\\\\')   // escape backslashes
                             .replace(/\n/g, '\\n');  // Unix line endings
         
         this.stringsCache.set(cacheKey, result);
