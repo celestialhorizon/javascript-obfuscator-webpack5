@@ -1,8 +1,4 @@
 //import Swal from 'sweetalert2';
-import * as workerTimers from 'worker-timers';
-import * as moment from 'moment';
-import tippy from 'tippy.js';
-import cnst from './../const.js';
 
 function suntik(){
   var browser = null;

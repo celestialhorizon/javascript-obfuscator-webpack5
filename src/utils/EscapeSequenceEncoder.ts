@@ -78,11 +78,11 @@ export class EscapeSequenceEncoder implements IEscapeSequenceEncoder {
             return <string>this.stringsCache.get(cacheKey);
         }
 
-        const result: string = string.replace(/'/g, '\\\'')
+        const result: string = string.replace(/\\/g, '\\\\')   // escape backslashes
                             .replace(/\r\n/g, '\\n') // Windows line endings
                             .replace(/\r/g, '\\n')   // old Mac line endings
-                            .replace(/\\/g, '\\\\')   // escape backslashes
-                            .replace(/\n/g, '\\n');  // Unix line endings
+                            .replace(/\n/g, '\\n')  // Unix line endings
+                            .replace(/'/g, '\\\'');
         
         this.stringsCache.set(cacheKey, result);
         this.stringsCache.set(`${result}-${String(false)}`, result);
